@@ -3,6 +3,9 @@ pipeline{
     tools{
         nodejs 'nodejs20'
     }
+    environment {
+    HEROKU_CREDENTIALS = credentials('Heroku1')
+    }
     stages{
         stage('Clone repository'){
             steps{
@@ -27,8 +30,9 @@ pipeline{
 
         stage('Deploy to Heroku'){
             steps{
-               withCredentials([gitUsernamePassword(credentialsId: 'Heroku1', gitToolName: 'PASS')]) {
-                sh 'git push https://${PASS}@git.heroku.com/todo-nodejs.git master'
+               withCredentials([usernamePassword(credentialsId: 'Heroku1', usernameVariable: 'HEROKU_USERNAME', passwordVariable: 'HEROKU_PASSWORD')]) {
+                 sh 'heroku login --username $HEROKU_USERNAME --password $HEROKU_PASSWORD'
+                 sh 'git push https://git.heroku.com/todo-nodejs.git master'
                 } 
             }
         }
