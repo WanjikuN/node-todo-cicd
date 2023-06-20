@@ -24,10 +24,10 @@ pipeline{
         //         sh 'npm test'
         //     }
         // }
-        
+
         stage('Deploy to Heroku'){
             steps{
-               withCredentials([gitUsernamePassword(credentialsId: 'Heroku', gitToolName: 'PASS')]) {
+               withCredentials([gitUsernamePassword(credentialsId: 'Heroku1', gitToolName: 'PASS')]) {
                 sh 'git push https://${PASS}@git.heroku.com/todo-nodejs.git master'
                 } 
             }
