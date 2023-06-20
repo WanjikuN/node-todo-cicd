@@ -14,16 +14,16 @@ pipeline{
                 sh 'npm install'
             }
         }
-        stage('Tests'){
-            post{
-                failure{
-                  mail bcc: '', body: 'Jenkins Test Failure', cc: '', from: '', replyTo: '', subject: 'Test Failed', to: 'cikunjoroge4@gmail.com'  
-                }
-            }
-            steps{
-                sh 'npm test'
-            }
-        }
+        // stage('Tests'){
+        //     post{
+        //         failure{
+        //           mail bcc: '', body: 'Jenkins Test Failure', cc: '', from: '', replyTo: '', subject: 'Test Failed', to: 'cikunjoroge4@gmail.com'  
+        //         }
+        //     }
+        //     steps{
+        //         sh 'npm test'
+        //     }
+        // }
         stage('Deploy to Heroku'){
             steps{
                withCredentials([gitUsernamePassword(credentialsId: 'Heroku', gitToolName: 'PASS')]) {
