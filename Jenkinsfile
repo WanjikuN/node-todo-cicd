@@ -36,8 +36,8 @@ pipeline{
         }
         stage('Slack Notifications'){
             steps{
-                slackSend channel: '#ip1-devops', color: '#008000', message: "Successful deployment of ${env.JOB_NAME} ,Build number ${env.BUILD_NUMBER} .  (<https://gallerypat.herokuapp.com/|Gallery url>)", teamDomain: 'patriciaip1', tokenCredentialId: 'slackIP'
-            }
+                slackSend channel: '#trial', color: 'green', message: 'successful deployment of ${env.JOB_NAME}', teamDomain: 'wanjiku-workspace', tokenCredentialId: 'slack2' 
+                 }
         }
     }
 }
