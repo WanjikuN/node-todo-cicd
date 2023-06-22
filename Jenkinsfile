@@ -36,7 +36,7 @@ pipeline{
         }
         stage('Slack Notifications'){
             steps{
-                slackSend channel: '#trial', color: 'green', message: 'successful deployment of ${env.JOB_NAME}', teamDomain: 'wanjiku-workspace', tokenCredentialId: 'slack2' 
+                slackSend channel: '#trial', color: 'green', message: "successful deployment of ${env.JOB_NAME}", teamDomain: 'wanjiku-workspace', tokenCredentialId: 'slack2' 
                  }
         }
     }
